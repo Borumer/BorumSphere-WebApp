@@ -43,7 +43,7 @@ export default function Register() {
   return (
     <div className={register.register}>
       <img
-        src="http://cdn.bforborum.com/images/icon.png"
+        src="/icon.png"
         alt="The Borum Logo, a B inside a black-bordered, white rectangle"
       />
       <h1>Register for Borum</h1>

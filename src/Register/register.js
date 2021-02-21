@@ -1,6 +1,7 @@
 import register from "./register.module.css";
 import FormField from "../FormField/formField";
 import { useState } from "react";
+import LogoImage from "../LogoImage";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -33,7 +34,7 @@ export default function Register() {
           setConfirmPassword("");
           setFirstName("");
           setLastName("");
-          alert("You were successfully registered! Welcome to Borum!");
+          
         } else {
           alert("A system error occurred and you could not be registered. We apologize for the inconvenience. ");
         }
@@ -41,11 +42,8 @@ export default function Register() {
   };
 
   return (
-    <div className={register.register}>
-      <img
-        src="/icon.png"
-        alt="The Borum Logo, a B inside a black-bordered, white rectangle"
-      />
+    <div className={register.accountForm}>
+      <LogoImage />
       <h1>Register for Borum</h1>
       <form onSubmit={handleRegister} method="post" className={register.form}>
         <FormField
@@ -86,13 +84,7 @@ export default function Register() {
           format="password"
           label="Confirm Password"
         />
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href="http://forum.bforborum.com/reset_password"
-        >
-          Forgot password? Reset it
-        </a>
+        
         <button type="submit" className={register.card}>
           Register
         </button>

@@ -15,7 +15,7 @@ export default function Layout(props) {
           Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className={layout.logo} />
         </a>
-        <p>&copy; 2020 Borum Tech</p>
+        <p>&copy; 2021 Borum Tech</p>
         <ul className={layout.legalLinks}>
           {/* <li className={layout.privacyPolicy}>
             <Link href="/legal/PrivacyPolicy">

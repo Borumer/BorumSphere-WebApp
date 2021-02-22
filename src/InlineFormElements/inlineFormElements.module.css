@@ -1,0 +1,19 @@
+.inlineFormElement {
+    display: flex;
+    align-items: center;
+}
+
+.inlineFormElement label {
+    width: 100px;
+    text-align: left;
+}
+
+.inlineFormElement [contentEditable="true"] {
+    width: 500px;
+}
+
+.inlineFormElement button {
+    background: none;
+    border: none;
+    color: rgb(0, 255, 13);
+}

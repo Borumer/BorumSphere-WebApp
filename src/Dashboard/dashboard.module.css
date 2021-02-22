@@ -1,0 +1,14 @@
+.signOut {
+    font-size: 2em;
+    margin-bottom: 1em;
+    background: white;
+    border: 1px solid blue;
+    padding: 1em;
+    border-radius: 25px;
+}
+
+.signOut:hover {
+    color: red;
+    cursor: pointer;
+    border: 1px solid red;
+}

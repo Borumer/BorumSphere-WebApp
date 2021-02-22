@@ -3,8 +3,7 @@ import formField from "./formField.module.css";
 export default function FormField({
 	autofocus = false,
 	label,
-	labelContent = () =>
-		label[0].toUpperCase() + label.substring(1).toLowerCase(),
+	labelContent = label[0].toUpperCase() + label.substring(1).toLowerCase(),
 	format = "text",
 	required = false,
 	value = "",

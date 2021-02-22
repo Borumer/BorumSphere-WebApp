@@ -8,8 +8,25 @@ export default function ChangePassword(props) {
 	const [newPassword, setNewPassword] = useState("");
 	const [confirmNewPassword, setConfirmNewPassword] = useState("");
 
+	const handleChangePasswordClick = e => {
+		e.preventDefault();
+
+		fetch("https://api.bforborum.com/api/login", {
+			method: "PUT",
+			headers: {
+				"content-type": "application/x-www-form-urlencoded",
+				"authorization": "Basic " + sessionStorage.getItem("apiKey")
+			},
+			body: `password=${newPassword}`
+		}).then(response => response.json()).then(response => {
+			if (!response.ok) {
+				alert("An error occurred and the password could not be changed.");
+			}
+		})
+	};
+
 	return (
-		<form className={changePassword.form}>
+		<form onSubmit={handleChangePasswordClick} className={changePassword.form}>
 			<FormField
 				labelContent="Current Password"
 				label="currpass"

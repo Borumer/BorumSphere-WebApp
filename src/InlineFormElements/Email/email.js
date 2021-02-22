@@ -22,8 +22,8 @@ export default function Email(props) {
 
 	return (
 		<div className={inlineFormElements.inlineFormElement}>
-			<label>Email</label>
-			<p contentEditable="true" onChange={setFormElement(setEmail)}>{email}</p>
+			<label for="email">Email</label>
+			<input id="email" value={email} contentEditable="true" onChange={setFormElement(setEmail)} />
             <button onClick={onEmailSaveClick}>Save</button>
 		</div>
 	);

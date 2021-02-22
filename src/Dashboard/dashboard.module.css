@@ -1,14 +1,24 @@
-.signOut {
-    font-size: 2em;
-    margin-bottom: 1em;
+.linkButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+.linkButtons button {
     background: white;
+    font-size: 2em;
     border: 1px solid blue;
+    margin-bottom: 1em;
     padding: 1em;
     border-radius: 25px;
 }
 
-.signOut:hover {
+.linkButtons button:hover {
+    color: blue;
+}
+
+.linkButtons .signOut:hover {
     color: red;
+    background-color: white;
     cursor: pointer;
     border: 1px solid red;
 }

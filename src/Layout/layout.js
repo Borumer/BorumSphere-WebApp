@@ -3,7 +3,9 @@ import layout from "./layout.module.css";
 export default function Layout(props) {
   return (
     <div className={layout.container}>
-      {props.children}
+      <section className="App">
+        {props.children}
+      </section>
 
       <footer className={layout.footer}>
         <a

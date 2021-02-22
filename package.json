@@ -1,6 +1,6 @@
 {
   "name": "borum-sphere",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "description": "The web app for Borum users to read, update, delete, and create their account and the Borum products that they're using",
   "private": true,
   "dependencies": {
@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.7.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },

@@ -2,6 +2,8 @@ import register from "./register.module.css";
 import FormField from "../FormField/formField";
 import { useState } from "react";
 import LogoImage from "../LogoImage";
+import Layout from "../Layout/layout";
+import { Link } from "react-router-dom";
 
 export default function Register() {
 	const [email, setEmail] = useState("");
@@ -52,57 +54,59 @@ export default function Register() {
 	};
 
 	return (
-		<div className={register.accountForm}>
-			<LogoImage />
-			<h1>Register for Borum</h1>
-			<form
-				onSubmit={handleRegister}
-				method="post"
-				className={register.form}
-			>
-				<FormField
-					required
-					onChange={handleEmailChange}
-					value={email}
-					focus
-					format="email"
-					label="Email"
-				/>
-				<FormField
-					required
-					onChange={handleFirstNameChange}
-					value={firstName}
-					focus
-					format="text"
-					label="First Name"
-				/>
-				<FormField
-					required
-					onChange={handleLastNameChange}
-					value={lastName}
-					focus
-					format="text"
-					label="Last Name"
-				/>
-				<FormField
-					required
-					onChange={handlePasswordChange}
-					value={password}
-					format="password"
-					label="Password"
-				/>
-				<FormField
-					required
-					onChange={handleConfirmPasswordChange}
-					value={confirmPassword}
-					format="password"
-					label="Confirm Password"
-				/>
-
-				<button type="submit" className={register.card}>
-					Register
-				</button>
-			</form>
-		</div>
+		<Layout>
+			<div className={register.accountForm}>
+				<LogoImage />
+				<h1>Register for Borum</h1>
+				<form
+					onSubmit={handleRegister}
+					method="post"
+					className={register.form}
+				>
+					<FormField
+						required
+						onChange={handleEmailChange}
+						value={email}
+						focus
+						format="email"
+						label="Email"
+					/>
+					<FormField
+						required
+						onChange={handleFirstNameChange}
+						value={firstName}
+						focus
+						format="text"
+						label="First Name"
+					/>
+					<FormField
+						required
+						onChange={handleLastNameChange}
+						value={lastName}
+						focus
+						format="text"
+						label="Last Name"
+					/>
+					<FormField
+						required
+						onChange={handlePasswordChange}
+						value={password}
+						format="password"
+						label="Password"
+					/>
+					<FormField
+						required
+						onChange={handleConfirmPasswordChange}
+						value={confirmPassword}
+						format="password"
+						label="Confirm Password"
+					/>
+					<Link to="/login">Already have an account? Login</Link>
+					<button type="submit" className={register.card}>
+						Register
+					</button>
+				</form>
+			</div>
+		</Layout>
 	);
 }

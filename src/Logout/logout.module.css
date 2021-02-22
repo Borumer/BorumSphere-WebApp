@@ -1,0 +1,15 @@
+.page {
+    display: flex;
+    flex-direction: column;
+}
+
+.logout {
+    background-color: lightgreen;
+    border-radius: 25px;
+    padding: 1em;
+}
+
+.page * {
+    margin: 1em 0;
+    font-size: 2em;
+}

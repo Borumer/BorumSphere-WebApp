@@ -20,6 +20,11 @@ export default function Login() {
 			.then(response => response.json())
 			.then(response => {
 				if (response.statusCode >= 200 && response.statusCode < 300) {
+					sessionStorage.setItem("id", response.data.id);
+					sessionStorage.setItem("email", email);
+					sessionStorage.setItem("firstName", response.data.first_name);
+					sessionStorage.setItem("lastName", response.data.last_name);
+					sessionStorage.setItem("apiKey", response.data.api_key);
 				} else {
 					alert(
 						"A system error occurred and you could not be logged in. "

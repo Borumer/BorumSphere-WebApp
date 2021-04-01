@@ -6,7 +6,7 @@ export default function FullName(props) {
 	const fullName = firstName + " " + lastName;
 
 	const saveNewName = () => {
-		fetch("https://api.bforborum.com/api/login", {
+		fetch("https://api.borumtech.com/api/login", {
 			method: "PUT",
 			headers: {
 				authorization: `Basic ${sessionStorage.getItem("apiKey")}`,

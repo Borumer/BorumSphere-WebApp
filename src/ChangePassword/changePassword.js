@@ -11,7 +11,7 @@ export default function ChangePassword(props) {
 	const handleChangePasswordClick = e => {
 		e.preventDefault();
 
-		fetch("https://api.bforborum.com/api/login", {
+		fetch("https://api.borumtech.com/api/login", {
 			method: "PUT",
 			headers: {
 				"content-type": "application/x-www-form-urlencoded",

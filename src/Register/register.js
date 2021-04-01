@@ -21,7 +21,7 @@ export default function Register() {
 	const handleRegister = e => {
 		e.preventDefault();
 
-		fetch("https://api.bforborum.com/api/register", {
+		fetch("https://api.borumtech.com/api/register", {
 			method: "POST",
 			headers: {
 				"content-type": "application/x-www-form-urlencoded",

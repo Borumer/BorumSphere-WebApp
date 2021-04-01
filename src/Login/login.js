@@ -14,7 +14,7 @@ export default function Login() {
 	const handleLogin = e => {
 		e.preventDefault();
 
-		fetch("https://api.bforborum.com/api/login", {
+		fetch("https://api.borumtech.com/api/login", {
 			method: "POST",
 			headers: {
 				"content-type": "application/x-www-form-urlencoded",
@@ -70,7 +70,7 @@ export default function Login() {
 					<a
 						target="_blank"
 						rel="noreferrer"
-						href="http://forum.bforborum.com/reset_password"
+						href="http://forum.borumtech.com/reset_password"
 					>
 						Forgot password? Reset it
 					</a>

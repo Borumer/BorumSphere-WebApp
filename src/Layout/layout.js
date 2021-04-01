@@ -20,7 +20,7 @@ export default function Layout(props) {
         <p>&copy; 2021 Borum Tech</p>
         <ul className={layout.legalLinks}>
           {/* <li className={layout.privacyPolicy}>
-            <Link href="/legal/PrivacyPolicy">
+            <Link to="/legal/PrivacyPolicy">
               <a>Privacy Policy</a>
             </Link>
           </li> */}

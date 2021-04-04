@@ -1,0 +1,10 @@
+const CONFIRMED_STATE = {
+	BEFORE: 0,
+	PENDING: 1,
+	SUCCESS: 2,
+	FAILURE: 3,
+};
+
+Object.freeze(CONFIRMED_STATE);
+
+export {CONFIRMED_STATE}

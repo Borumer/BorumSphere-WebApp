@@ -10,12 +10,11 @@ export default function FormField({
 	onChange = () => {},
 }) {
 	return (
-		<fieldset>
+		<fieldset className={formField.field}>
 			<legend>
 				<label htmlFor={label}>{labelContent}</label>
 			</legend>
 			<input
-				className={formField.field}
 				required={required}
 				autoFocus={autofocus}
 				type={format}

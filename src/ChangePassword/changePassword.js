@@ -1,6 +1,6 @@
 import FormField from "../FormField/formField";
 import { useState } from "react";
-import changePassword from "../Register/register.module.css";
+import changePassword from "../AccountForm/accountForm.module.css";
 import { setFormElement } from "../reactExtensions";
 
 export default function ChangePassword(props) {
@@ -26,7 +26,7 @@ export default function ChangePassword(props) {
 	};
 
 	return (
-		<form onSubmit={handleChangePasswordClick} className={changePassword.form}>
+		<form style={{width: "auto"}} onSubmit={handleChangePasswordClick} className={changePassword.form}>
 			<FormField
 				labelContent="Current Password"
 				label="currpass"

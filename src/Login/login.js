@@ -4,6 +4,7 @@ import AccountForm from "../AccountForm/accountForm";
 import login from "../AccountForm/accountForm.module.css";
 import FormField from "../FormField/formField";
 import Layout from "../Layout/layout";
+import { CONFIRMED_STATE } from "../lib/states";
 
 export default function Login() {
 	const [email, setEmail] = useState("");
@@ -11,9 +12,7 @@ export default function Login() {
 
 	const history = useHistory("");
 
-	const handleLogin = e => {
-		e.preventDefault();
-
+	const handleLogin = (e, setConfirmed, setErrorMessage) => {
 		fetch("https://api.borumtech.com/api/login", {
 			method: "POST",
 			headers: {
@@ -21,24 +20,41 @@ export default function Login() {
 			},
 			body: `email=${email}&password=${password}`,
 		})
-			.then(response => response.json())
 			.then(response => {
-				if (response.statusCode >= 200 && response.statusCode < 300) {
-					sessionStorage.setItem("id", response.data.id);
-					sessionStorage.setItem("email", email);
-					sessionStorage.setItem(
-						"firstName",
-						response.data.first_name
+				if (response.ok) {
+					return response.json();
+				} else if (response.status === 401) {
+					throw new Error(
+						"The email or password you entered was incorrect. Please try again."
 					);
-					sessionStorage.setItem("lastName", response.data.last_name);
-					sessionStorage.setItem("apiKey", response.data.api_key);
-
-					history.push("/");
 				} else {
-					alert(
-						"A system error occurred and you could not be logged in. "
+					throw new Error(
+						"A system error occurred and you could not be logged in at this time"
 					);
 				}
+			})
+			.then(response => {
+				setConfirmed(CONFIRMED_STATE.SUCCESS);
+				localStorage.setItem("id", response.data.id);
+				localStorage.setItem("email", email);
+				localStorage.setItem("firstName", response.data.first_name);
+				localStorage.setItem("lastName", response.data.last_name);
+				localStorage.setItem("apiKey", response.data.api_key);
+
+				console.log("Test");
+				history.push("/");
+			})
+			.catch(err => {
+				let { message } = err;
+
+				if (err.name !== 'Error') {
+					message =
+						"A system error occurred and you could not be logged in at this time. Please try again another time.";
+				}
+
+				console.error(err);
+				setErrorMessage(message);
+				setConfirmed(CONFIRMED_STATE.FAILURE);
 			});
 	};
 
@@ -46,7 +62,9 @@ export default function Login() {
 		<Layout>
 			<AccountForm
 				heading="Login into Borum"
-				formProps={{ onSubmit: handleLogin, method: "post" }}
+				formProps={{ method: "post" }}
+				handleSubmit={handleLogin}
+				failedAction=" and you could not be logged in"
 			>
 				<FormField
 					autofocus
@@ -63,11 +81,7 @@ export default function Login() {
 					value={password}
 					onChange={e => setPassword(e.target.value)}
 				/>
-				<a
-					target="_blank"
-					rel="noreferrer"
-					href="/forgot-password"
-				>
+				<a target="_blank" rel="noreferrer" href="/forgot-password">
 					Forgot password? Reset it
 				</a>
 				<Link to="/signup">Don't have an account yet? Register</Link>

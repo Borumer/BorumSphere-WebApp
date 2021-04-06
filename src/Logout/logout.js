@@ -3,7 +3,7 @@ import Layout from "../Layout/layout";
 import logout from "./logout.module.css";
 
 export default function Logout() {
-    sessionStorage.clear();
+    localStorage.clear();
     
 	return (
 		<Layout>

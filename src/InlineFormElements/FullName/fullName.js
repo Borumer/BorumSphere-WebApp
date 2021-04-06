@@ -1,15 +1,15 @@
 import inlineFormElements from "../inlineFormElements.module.css";
 
 export default function FullName(props) {
-	const firstName = sessionStorage.getItem("firstName") ?? "";
-	const lastName = sessionStorage.getItem("lastName") ?? "";
+	const firstName = localStorage.getItem("firstName") ?? "";
+	const lastName = localStorage.getItem("lastName") ?? "";
 	const fullName = firstName + " " + lastName;
 
 	const saveNewName = () => {
 		fetch("https://api.borumtech.com/api/login", {
 			method: "PUT",
 			headers: {
-				authorization: `Basic ${sessionStorage.getItem("apiKey")}`,
+				authorization: `Basic ${localStorage.getItem("apiKey")}`,
 				"content-type": "application/x-www-form-urlencoded",
 			},
 			body: `firstName=${firstName}&lastName=${lastName}`,

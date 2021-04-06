@@ -15,7 +15,7 @@ export default function ChangePassword(props) {
 			method: "PUT",
 			headers: {
 				"content-type": "application/x-www-form-urlencoded",
-				"authorization": "Basic " + sessionStorage.getItem("apiKey")
+				"authorization": "Basic " + localStorage.getItem("apiKey")
 			},
 			body: `password=${newPassword}`
 		}).then(response => response.json()).then(response => {

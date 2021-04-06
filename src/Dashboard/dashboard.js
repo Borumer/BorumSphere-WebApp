@@ -8,7 +8,7 @@ import dashboard from "./dashboard.module.css";
 export default function Dashboard() {
 	const history = useHistory();
 
-	if (sessionStorage.getItem("apiKey") == null) {
+	if (localStorage.getItem("apiKey") == null) {
 		history.push("/login");
 	}
 

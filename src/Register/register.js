@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import AccountForm from "../AccountForm/accountForm";
 import accountForm from "../AccountForm/accountForm.module.css";
 import FormField from "../FormField/formField";
 import Layout from "../Layout/layout";
+import { CONFIRMED_STATE } from "../lib/states";
 
 export default function Register() {
 	const [email, setEmail] = useState("");
@@ -12,15 +13,15 @@ export default function Register() {
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 
+	const history = useHistory();
+
 	const handleEmailChange = e => setEmail(e.target.value);
 	const handlePasswordChange = e => setPassword(e.target.value);
 	const handleConfirmPasswordChange = e => setConfirmPassword(e.target.value);
 	const handleFirstNameChange = e => setFirstName(e.target.value);
 	const handleLastNameChange = e => setLastName(e.target.value);
 
-	const handleRegister = e => {
-		e.preventDefault();
-
+	const handleRegister = (e, setConfirmed, setErrorMessage) => {
 		fetch("https://api.borumtech.com/api/register", {
 			method: "POST",
 			headers: {
@@ -28,28 +29,42 @@ export default function Register() {
 			},
 			body: `email=${email}&password=${password}&first_name=${firstName}&last_name=${lastName}`,
 		})
-			.then(response => response.json())
-			.catch(response => {
-				alert("You could not be registered at this time");
-			})
 			.then(response => {
-				if (response.statusCode >= 200 && response.statusCode < 300) {
-					setEmail("");
-					setPassword("");
-					setConfirmPassword("");
-					setFirstName("");
-					setLastName("");
-
-					sessionStorage.setItem("email", email);
-					sessionStorage.setItem("id", response.data.id);
-					sessionStorage.setItem("firstName", firstName);
-					sessionStorage.setItem("lastName", lastName);
-					sessionStorage.setItem("apiKey", response.data.api_key);
+				if (response.ok) {
+					return response.json();
 				} else {
-					alert(
-						"A system error occurred and you could not be registered. We apologize for the inconvenience. "
+					throw new Error(
+						"A system error occurred and you could not be logged in at this time. Please try again another time."
 					);
 				}
+			})
+			.then(response => {
+				setConfirmed(CONFIRMED_STATE.SUCCESS);
+
+				setEmail("");
+				setPassword("");
+				setConfirmPassword("");
+				setFirstName("");
+				setLastName("");
+
+				localStorage.setItem("email", email);
+				localStorage.setItem("id", response.data.id);
+				localStorage.setItem("firstName", firstName);
+				localStorage.setItem("lastName", lastName);
+				localStorage.setItem("apiKey", response.data.api_key);
+
+				history.push("/");
+			})
+			.catch(err => {
+				let { message } = err;
+				if (err.name !== "Error") {
+					message =
+						"A system error occurred and you could not be logged in at this time. Please try again another time.";
+				}
+
+				console.error(err);
+				setErrorMessage(message);
+				setConfirmed(CONFIRMED_STATE.FAILURE);
 			});
 	};
 
@@ -61,6 +76,8 @@ export default function Register() {
 					onSubmit: handleRegister,
 					method: "post",
 				}}
+				failedAction=" and you could not be registered"
+				handleSubmit={handleRegister}
 			>
 				<FormField
 					required

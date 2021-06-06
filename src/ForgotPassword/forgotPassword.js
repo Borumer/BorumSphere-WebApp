@@ -9,18 +9,13 @@ export default function ForgotPassword(props) {
 	const [email, setEmail] = useState("");
 
 	const handleEmailSubmit = (e, setConfirmed) => {
-		fetch(`https://api.borumtech.com/api/v1/login`, {
-			method: "put",
+		fetch(`https://forum.borumtech.com/reset_password`, {
+			method: "POST",
 			headers: {
-				"Content-Type": "application/x-www-form-urlencoded",
+				"content-type": "application/x-www-form-urlencoded"
 			},
-			body: `email=${email}`,
+			body: `email=${email}`
 		})
-			.then(response => {
-				if (response.ok) {
-					return response.json();
-				}
-			})
 			.then(response => setConfirmed(CONFIRMED_STATE.SUCCESS))
 			.catch(response => {
 				setConfirmed(CONFIRMED_STATE.FAILURE);

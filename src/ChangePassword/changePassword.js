@@ -11,48 +11,26 @@ export default function ChangePassword(props) {
 	const handleChangePasswordClick = e => {
 		e.preventDefault();
 
-		const userEmail = localStorage.getItem("email");
-
-		const verifyCurrentPassword = () =>
-			fetch("https://api.borumtech.com/api/login", {
-				method: "POST",
-				headers: {
-					"content-type": "application/x-www-form-urlencoded",
-				},
-				body: `email=${userEmail}&password=${currentPassword}`,
-			}).then(response => {
-				if (response.ok) return response.json();
-				throw new Error(response.json());
-			});
-
-		const requestPasswordChange = () =>
-			fetch("https://api.borumtech.com/api/login", {
-				method: "PUT",
-				headers: {
-					"content-type": "application/x-www-form-urlencoded",
-					authorization: "Basic " + localStorage.getItem("apiKey"),
-				},
-				body: `password=${newPassword}`,
+		fetch("https://api.borumtech.com/api/login", {
+			method: "PUT",
+			headers: {
+				"content-type": "application/x-www-form-urlencoded",
+				authorization: "Basic " + localStorage.getItem("apiKey"),
+			},
+			body: `old_password=${currentPassword}&new_password=${newPassword}`,
+		})
+			.then(response => response.json()).then(response => {
+				if (response.statusCode >= 200 && response.statusCode < 300)	
+					return response;
+				
+				throw new Error(response.error.message);
 			})
-				.then(response => {
-					if (response.ok) {
-						return response.json();
-					}
-				})
-				.then(response => {
-					if (!response.ok) {
-						alert(
-							"An error occurred and the password could not be changed."
-						);
-					}
-				});
-
-		verifyCurrentPassword()
-			.then(requestPasswordChange)
-			.catch(() => {
-				alert(
-					"The current password is not correct. If you do not remember your current password, log out and click 'Forgot Password'"
-				);
+			.then(response => {
+				alert("Password changed successfully");
+			})
+			.catch(e => {
+				console.error(e);
+				alert(e);
 			});
 	};
 

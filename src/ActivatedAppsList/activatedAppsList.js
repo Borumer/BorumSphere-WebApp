@@ -6,7 +6,7 @@ export default function ActivatedAppsList() {
   const [activatedApps, setActivatedApps] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8400/login`, {
+    fetch(`https://api.borumtech.com/api/login`, {
       headers: {
         authorization: `Basic ${localStorage.getItem("apiKey")}`,
       },
@@ -18,7 +18,8 @@ export default function ActivatedAppsList() {
       })
       .then((response) => {
         setActivatedApps(response.data.filter((item) => item.activated));
-      });
+      })
+      .catch(alert);
 
     document.title = "Activated Apps - Borum Sphere";
   }, []);

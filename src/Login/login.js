@@ -42,7 +42,7 @@ export default function Login() {
 				localStorage.setItem("apiKey", response.data.api_key);
 
 				console.log("Test");
-				history.push("/");
+				history.push("/account");
 			})
 			.catch(err => {
 				let { message } = err;

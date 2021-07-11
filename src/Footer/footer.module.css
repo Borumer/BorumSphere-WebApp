@@ -1,0 +1,29 @@
+.footer {
+  grid-row: 3;
+  grid-column: 1 / -1;
+  padding: 5px 0.5em 0 0.5em;
+  align-self: flex-end;
+  min-height: 70px;
+  width: 100%;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer img {
+  margin-left: 0.5rem;
+}
+
+.vercelText {
+  min-width: 200px;
+}
+
+.logo {
+  height: 1em;
+}
+
+.legalLinks {
+  list-style-type: none;
+}

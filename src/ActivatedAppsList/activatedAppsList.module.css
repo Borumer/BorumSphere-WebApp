@@ -1,0 +1,14 @@
+.container ul {
+    padding-inline-start: 0;
+}
+
+.container li {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.container li img {
+    margin-right: 1em;
+}

@@ -6,6 +6,8 @@ import { Route, BrowserRouter, Switch } from "react-router-dom";
 import Dashboard from "./Dashboard/dashboard";
 import ForgotPassword from "./ForgotPassword/forgotPassword";
 import ResetPassword from "./ResetPassword/resetPassword";
+import AccountSettings from "./AccountSettings/accountSettings";
+import ActivatedAppsList from "./ActivatedAppsList/activatedAppsList";
 
 function App() {
 	return (
@@ -13,6 +15,12 @@ function App() {
 			<Switch>
 				<Route exact path="/">
 					<Dashboard />
+				</Route>
+				<Route path="/account">
+					<AccountSettings />
+				</Route>
+				<Route path="/apps">
+					<ActivatedAppsList />
 				</Route>
 				<Route path="/signup">
 					<Register />

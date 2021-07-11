@@ -1,7 +1,6 @@
 import { Link, useHistory } from "react-router-dom";
-import ChangePassword from "../ChangePassword/changePassword";
-import Email from "../InlineFormElements/Email/email";
-import FullName from "../InlineFormElements/FullName/fullName";
+import AccountSettings from "../AccountSettings/accountSettings";
+import ActivatedApps from "../ActivatedAppsList/activatedAppsList";
 import Layout from "../Layout/layout";
 import dashboard from "./dashboard.module.css";
 
@@ -14,12 +13,9 @@ export default function Dashboard() {
 
 	return (
 		<Layout>
-			<article>
-				<h1>Borum Sphere Dashboard</h1>
-				<FullName />
-				<Email />
-				<ChangePassword />
-				<div className={dashboard.linkButtons}>
+			<AccountSettings />
+			<ActivatedApps />
+			<div className={dashboard.linkButtons}>
 					<button>
 						<Link to="/signup">Create new Borum Account</Link>
 					</button>
@@ -27,7 +23,6 @@ export default function Dashboard() {
 						<Link to="/logout">Log Out</Link>
 					</button>
 				</div>
-			</article>
 		</Layout>
 	);
 }

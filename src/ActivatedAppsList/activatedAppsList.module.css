@@ -5,6 +5,9 @@
 .container li {
     list-style: none;
     text-align: left;
+}
+
+.container li a {
     display: flex;
     align-items: center;
 }

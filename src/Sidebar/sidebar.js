@@ -1,18 +1,14 @@
 import { Link } from "react-router-dom";
+import Footer from "../Footer/footer";
 import sidebar from "./sidebar.module.css";
+import SidebarNav from "./sidebarNav";
 
 export default function Sidebar() {
     return (
-        <ul className={sidebar.container}>
-            <li className={window.location.pathname === '/account' ? sidebar.active : ''}>
-                <Link to="/account">Account Settings</Link>
-            </li>
-            <li className={window.location.pathname === '/apps' ? sidebar.active : ''}>
-                <Link to="/apps">Activated Apps</Link>
-            </li>
-            <li>
-                <Link to="/logout">Log Out</Link>
-            </li>
-        </ul>
+        <nav className={sidebar.container}>
+            <SidebarNav />
+            <Link to="/logout" style={{width: '200px', padding: '1em', borderTop: '1px solid black'}}>Log Out</Link>
+            <Footer />
+        </nav>
     );
 }

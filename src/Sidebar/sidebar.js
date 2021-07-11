@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Footer from "../Footer/footer";
 import sidebar from "./sidebar.module.css";
 import SidebarNav from "./sidebarNav";
-import { pushRotate as Menu } from "react-burger-menu";
+import { elastic as Menu } from "react-burger-menu";
 import burgerMenu from "../styles/burgermenu.css";
 
 export default function Sidebar() {

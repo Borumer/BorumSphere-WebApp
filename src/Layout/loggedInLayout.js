@@ -3,9 +3,9 @@ import layout from "./layout.module.css";
 
 export default function LoggedInLayout(props) {
     return (
-        <div className={`${layout.container} ${layout.loggedInContainer}`}>
+        <div id="outer-container" className={`${layout.container} ${layout.loggedInContainer}`}>
             <Sidebar />
-            {props.children}
+            <div id="page-wrap">{props.children}</div>
         </div>
     );
 }

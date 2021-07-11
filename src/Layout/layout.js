@@ -3,7 +3,8 @@ import layout from "./layout.module.css";
 export default function Layout(props) {
   return (
     <div className={layout.container}>
-      <section className="App">
+      <nav className={layout.sidebar}>{props.sidebar}</nav>
+      <section className={layout.app}>
         {props.children}
       </section>
 

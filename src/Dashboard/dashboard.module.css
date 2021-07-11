@@ -1,15 +1,15 @@
 .linkButtons {
     display: flex;
-    flex-direction: column;
+    align-items: center;
 }
 
 .linkButtons button {
     background: white;
-    font-size: 2em;
+    font-size: 1em;
     border: 1px solid blue;
-    margin-bottom: 1em;
+    margin-right: 1em;
     padding: 1em;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 
 .linkButtons button:hover {

@@ -1,0 +1,15 @@
+.container {
+    text-align: left;
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+.container li {
+    margin: 1em 1em 1em 0;
+    padding: 1em;
+    border-radius: 0 25px 25px 0;
+}
+
+.container li.active {
+    background-color: lightblue;
+}

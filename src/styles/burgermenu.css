@@ -1,3 +1,17 @@
+#page-wrap {
+  grid-row: 1;
+  grid-column: 1 / -1;
+}
+
+#outer-container :not(#page-wrap) {
+  grid-row: 1 / -1;
+  grid-column: 1 / -1;
+}
+
+#page-wrap h2 {
+  text-align: center;
+}
+
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;

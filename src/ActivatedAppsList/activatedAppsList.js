@@ -6,6 +6,8 @@ export default function ActivatedAppsList() {
   const [activatedApps, setActivatedApps] = useState(null);
 
   useEffect(() => {
+    if (!localStorage.getItem('apiKey')) return;
+    
     fetch(`https://api.borumtech.com/api/login`, {
       headers: {
         authorization: `Basic ${localStorage.getItem("apiKey")}`,
@@ -19,7 +21,7 @@ export default function ActivatedAppsList() {
       .then((response) => {
         setActivatedApps(response.data.filter((item) => item.activated));
       })
-      .catch(alert);
+      .catch(() => alert("A system error occurred. Your activated apps could not fetched at this time."));
 
     document.title = "Activated Apps - Borum Sphere";
   }, []);

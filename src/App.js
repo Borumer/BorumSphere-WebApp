@@ -2,7 +2,7 @@ import Register from "./Register/register";
 import Login from "./Login/login";
 import Logout from "./Logout/logout";
 import "./App.css";
-import { Route, BrowserRouter, Switch } from "react-router-dom";
+import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
 import ForgotPassword from "./ForgotPassword/forgotPassword";
 import ResetPassword from "./ResetPassword/resetPassword";
 import AccountSettings from "./AccountSettings/accountSettings";
@@ -13,7 +13,7 @@ function App() {
 		<BrowserRouter>
 			<Switch>
 				<Route exact path="/">
-					<AccountSettings />
+					<Redirect to={localStorage.getItem('apiKey') ? '/account' : '/login'} />
 				</Route>
 				<Route path="/account">
 					<AccountSettings />

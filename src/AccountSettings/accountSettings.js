@@ -9,7 +9,7 @@ export default function AccountSettings() {
     useEffect(() => {
         document.title = "Account Settings - Borum Sphere";
     }, []);
-    
+
     return (
         <LoggedInLayout>
             <main className={accountSettings.container}>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import AccountForm from "../AccountForm/accountForm";
 import login from "../AccountForm/accountForm.module.css";
@@ -11,6 +11,10 @@ export default function Login() {
 	const [password, setPassword] = useState("");
 
 	const history = useHistory("");
+
+	useEffect(() => {
+		document.title = "Login - Borum Sphere";
+	}, []);
 
 	const handleLogin = (e, setConfirmed, setErrorMessage) => {
 		fetch("https://api.borumtech.com/api/login", {

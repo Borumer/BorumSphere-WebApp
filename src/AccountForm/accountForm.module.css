@@ -72,3 +72,7 @@
 .form a {
 	margin: 0.5em 0;
 }
+
+.form a:hover {
+	text-decoration: black underline solid;
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import AccountForm from "../AccountForm/accountForm";
 import login from "../AccountForm/accountForm.module.css";
 import FormField from "../FormField/formField";
@@ -11,13 +11,17 @@ export default function Login() {
 	const [password, setPassword] = useState("");
 
 	const history = useHistory("");
+	const location = useLocation();
 
 	useEffect(() => {
 		document.title = "Login - Borum Sphere";
 	}, []);
 
 	const handleLogin = (e, setConfirmed, setErrorMessage) => {
-		fetch("https://api.borumtech.com/api/login", {
+		const urlSearch = new URLSearchParams(location.search);
+		const redirect = urlSearch.get('redirect');
+
+		fetch(`https://api.borumtech.com/api/login?redirect=${redirect}`, {
 			method: "POST",
 			headers: {
 				"content-type": "application/x-www-form-urlencoded",
@@ -45,8 +49,8 @@ export default function Login() {
 				localStorage.setItem("lastName", response.data.last_name);
 				localStorage.setItem("apiKey", response.data.api_key);
 
-				console.log("Test");
-				history.push("/account");
+				if (redirect) window.location.assign(decodeURIComponent(redirect));
+				else history.push("/account");
 			})
 			.catch(err => {
 				let { message } = err;
